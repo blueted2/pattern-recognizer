@@ -1,0 +1,10 @@
+create_clock -period 20.000 -name clk [get_ports clk]
+derive_clock_uncertainty
+set_input_delay -clock clk -max 0 [get_ports reset]
+set_input_delay -clock clk -min 0 [get_ports reset]
+set_input_delay -clock clk -max 0 [get_ports data]
+set_input_delay -clock clk -min 0 [get_ports data]
+set_output_delay -clock clk -max 0 [get_ports seg1[*]]
+set_output_delay -clock clk -min 0 [get_ports seg1[*]]
+set_output_delay -clock clk -max 0 [get_ports seg2[*]]
+set_output_delay -clock clk -min 0 [get_ports seg2[*]]
