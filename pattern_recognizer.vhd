@@ -32,7 +32,7 @@ function int_to_7_seg(val : integer) return std_logic_vector IS
 BEGIN
     PROCESS(reset, clk)
         VARIABLE last_bits : std_logic_vector(4 DOWNTO 0);
-        VARIABLE count : integer;
+        VARIABLE count, first_digit, second_digit : integer;
         -- <your declarations>
         BEGIN
         -- no code here
@@ -48,15 +48,20 @@ BEGIN
                 count := count + 1;
             end if;
 
-            -- split into two digits
-
-            
-
             count_sig <= count;
+            
+            if count > 99 then
+                -- in function int_to_7_seg it will return - -
+                first_digit := -1;
+                second_digit := -1;
+            else
+                first_digit := count mod 10;
+                second_digit := (count - first_digit) / 10;
+            end if;
 
-            seg1 <= int_to_7_seg(count);
+            seg1 <= int_to_7_seg(first_digit);
+            seg2 <= int_to_7_seg(second_digit);
 
-            -- seg1 <= "00" & std_logic_vector(last_bits);
             -- synchronous actions (sequential)
         end if;
         -- no code here
