@@ -1,7 +1,7 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
-
+-- comment
 ENTITY pattern_recognizer IS
     PORT (
         data, reset, clk : IN std_logic;
