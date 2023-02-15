@@ -17,9 +17,7 @@ BEGIN
         BEGIN
         if reset = '0' then
             count := 0;
-        end if;
-
-        if rising_edge(clk) then
+        elsif rising_edge(clk) then
             -- shift last_bits to the left by one and append new data
             if match = '1' then
                 count := count + 1;

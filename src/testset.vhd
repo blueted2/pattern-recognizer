@@ -15,6 +15,12 @@ BEGIN
   PROCESS
   VARIABLE pattern_vector : std_logic_vector(4 DOWNTO 0) := "11000";
   BEGIN
+    reset <= '0';
+    WAIT FOR 20 ns;
+    reset <= '1';
+    WAIT FOR 20 ns;
+
+
     FOR i IN 1 TO 110 LOOP
       FOR ii in pattern_vector'range loop
         data <= pattern_vector(ii);
@@ -29,8 +35,9 @@ BEGIN
     clock <= '0';
     WAIT FOR 20 ns;
     clock <= '1';
-    WAIT FOR 20 ns;
     reset <= '1';
+    WAIT FOR 20 ns;
+
 
     FOR i IN 1 TO 50 LOOP
     FOR ii in pattern_vector'range loop

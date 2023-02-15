@@ -10,7 +10,6 @@ ENTITY pattern_recognizer IS
 END pattern_recognizer;
 
 ARCHITECTURE behavior of pattern_recognizer IS
-SIGNAL count_sig : integer;
 
 function int_to_7_seg(val : integer) return std_logic_vector IS 
     BEGIN
@@ -38,17 +37,13 @@ BEGIN
         if reset='0' then -- reset is active low
             count := 0;
             last_bits := "00000";
+            seg1 <= int_to_7_seg(-1);
+            seg2 <= int_to_7_seg(-1);
             -- reset actions
         elsif rising_edge(clk) then
             -- shift last_bits to the left by one and append new data
             last_bits := last_bits(3 DOWNTO 0) & data;
 
-            if last_bits = "11000" then
-                count := count + 1;
-            end if;
-
-            count_sig <= count;
-            
             if count > 99 then
                 -- in function int_to_7_seg it will return - -
                 first_digit := -1;
@@ -56,6 +51,10 @@ BEGIN
             else
                 first_digit := count mod 10;
                 second_digit := (count - first_digit) / 10;
+            end if;
+
+            if last_bits = "11000" then
+                count := count + 1;
             end if;
 
             seg1 <= int_to_7_seg(first_digit);
