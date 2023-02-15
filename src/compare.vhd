@@ -13,6 +13,8 @@ ARCHITECTURE behavior of compare IS
 BEGIN
     PROCESS(clk, reset)
     begin
-        assert (seg1_b = seg1_s and seg1_b = seg1_s) report "the signal are not equals" severity warning;
+        if rising_edge(clk) then
+            assert (seg1_b = seg1_s and seg1_b = seg1_s) report "the signal are not equals" severity warning;
+        end if;
     end process;
 end behavior;
