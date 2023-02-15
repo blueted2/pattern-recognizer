@@ -12,7 +12,7 @@ END counter;
 ARCHITECTURE behavior of counter IS
 BEGIN
     PROCESS(clk, reset)
-        VARIABLE count : integer := 0;
+        VARIABLE count : integer RANGE 0 to 101 := 0;
         -- <your declarations>
         BEGIN
         if reset = '0' then
@@ -27,6 +27,8 @@ BEGIN
                 -- in function int_to_7_seg it will return - -
                 bcd1 <= 10;
                 bcd2 <= 10;
+                
+                count := 100;
             else
                 bcd1 <= count mod 10;
                 bcd2 <= (count - (count mod 10)) / 10;
