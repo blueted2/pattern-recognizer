@@ -21,13 +21,13 @@ ARCHITECTURE subsystems OF pattern_recognizer IS
   COMPONENT counter is
     PORT (
       match, reset, clk : IN std_logic;
-      bcd1, bcd2 : OUT integer
+      bcd1, bcd2 : OUT integer RANGE 0 to 11
     ); 
   END COMPONENT;
   
   COMPONENT disp_drv is 
     PORT (
-      bcd : IN integer;
+      bcd : IN integer RANGE 0 to 11;
       seg: OUT std_logic_vector(6 downto 0)
     ); 
   END COMPONENT;
@@ -35,7 +35,7 @@ ARCHITECTURE subsystems OF pattern_recognizer IS
   -- local connections
   SIGNAL match_s : std_logic;
   SIGNAL output_seg1, output_seg2  : std_logic_vector(6 downto 0);
-  SIGNAL bcd1_s, bcd2_s : integer;
+  SIGNAL bcd1_s, bcd2_s : integer RANGE 0 to 11;
   BEGIN
    ld : list_det
         PORT MAP ( data => data,

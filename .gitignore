@@ -4,3 +4,8 @@ work/
 *.wlf
 *.mpf
 *.vstf
+
+simulation/
+output_files/
+db/
+incremental_db/

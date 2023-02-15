@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 ENTITY counter IS
     PORT (
         match, reset, clk : IN std_logic;
-        bcd1, bcd2 : OUT integer
+        bcd1, bcd2 : OUT integer RANGE 0 to 11 
     ); 
 END counter;
 
@@ -25,8 +25,8 @@ BEGIN
 
             if count > 99 then
                 -- in function int_to_7_seg it will return - -
-                bcd1 <= -1;
-                bcd2 <= -1;
+                bcd1 <= 10;
+                bcd2 <= 10;
             else
                 bcd1 <= count mod 10;
                 bcd2 <= (count - (count mod 10)) / 10;
