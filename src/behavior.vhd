@@ -29,7 +29,7 @@ function int_to_7_seg(val : integer) return std_logic_vector IS
         END case;
     END function;
 BEGIN
-    PROCESS(reset, clk, data)
+    PROCESS(reset, clk)
         VARIABLE last_bits : std_logic_vector(4 DOWNTO 0);
         VARIABLE count, first_digit, second_digit : integer := 0;
         -- <your declarations>
