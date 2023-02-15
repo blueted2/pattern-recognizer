@@ -14,17 +14,17 @@ ARCHITECTURE behavior of pattern_recognizer IS
 function int_to_7_seg(val : integer) return std_logic_vector IS 
     BEGIN
         case val is 
-            when 0 => return "1111110";
-            when 1 => return "0110000";
-            when 2 => return "1101101";
-            when 3 => return "1111001";
-            when 4 => return "0110011";
-            when 5 => return "1011011";
-            when 6 => return "1011111";
-            when 7 => return "1110000";
-            when 8 => return "1111110";
-            when 9 => return "1111011";
-            when others => return "0000001";
+            when 0      => return "0000001";
+            when 1      => return "1001111";
+            when 2      => return "0010010";
+            when 3      => return "0000110";
+            when 4      => return "1001100";
+            when 5      => return "0100100";
+            when 6      => return "0100000";
+            when 7      => return "0001111";
+            when 8      => return "0000001";
+            when 9      => return "0000100";
+            when others => return "1111110";
         END case;
     END function;
 BEGIN
