@@ -8,7 +8,7 @@ use work.seven_seg.all;
 
 ENTITY disp_drv IS
     PORT (
-        bcd : IN integer;
+        bcd : IN integer RANGE 0 to 11;
         seg: OUT std_logic_vector(6 downto 0)
     ); 
 END disp_drv;
