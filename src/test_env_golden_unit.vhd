@@ -50,3 +50,13 @@ configuration components of test_env_golden_unit is
     end for;
 end components;
 
+configuration post_simulation of test_env_golden_unit is
+    for compare_with_golden_unit
+        FOR b : pattern_recognizer   
+            USE ENTITY work.pattern_recognizer(behavior);
+        end for;
+        FOR s : pattern_recognizer   
+            USE ENTITY work.pattern_recognizer(structure);
+        end for;
+    end for;
+end post_simulation;
